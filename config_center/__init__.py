@@ -11,6 +11,7 @@ define('bind',default='0.0.0.0',type=str,help='Server bind')
 
 define('connect',default='127.0.0.1:2181',type=str,help='zookeeper connect')
 define('root',default='/conf',type=str,help='zookeeper root')
+define('workspace',default='/tmp/workspace',type=str,help='config center workspace')
 
 
 def make_app(router,**settings):

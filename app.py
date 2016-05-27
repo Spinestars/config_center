@@ -6,11 +6,14 @@ from tornado.options import options
 from tornado.ioloop import IOLoop
 from config_center import make_app
 
-from config_center.handler import IndexHandler,ConfHandler
+from config_center.handler import IndexHandler,CreateHandler,ShowHandler,EditHandler,DeleteHandler
 
 router = [
     (r'/', IndexHandler),
-    (r'/conf',ConfHandler),
+    (r'/create',CreateHandler),
+    (r'/edit', EditHandler),
+    (r'/show',ShowHandler),
+    (r'/delete',DeleteHandler),
 ]
 
 
