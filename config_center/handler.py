@@ -9,7 +9,6 @@ from tornado.web import RequestHandler
 from tornado.options import options
 from tornado.web import HTTPError
 from kazoo.exceptions import NodeExistsError
-from .mixins import RestMixin
 
 
 class CreateHandler(RequestHandler):
@@ -95,7 +94,6 @@ class CreateHandler(RequestHandler):
         # 写current
         self.write_current(node, version)
 
-        #self.write('create {0} success'.format(node))
         self.redirect('/')
 
 
@@ -141,8 +139,6 @@ class ShowHandler(RequestHandler):
         appid,conf_name,current_version= data.split('(')
 
         path = '/'.join([options.workspace,options.root,appid,current_version,conf_name])
-        print('--------------path={0}'.format(path))
-
         with open(path) as f:
             content = f.read()
 
@@ -160,7 +156,6 @@ class EditHandler(RequestHandler):
         appid, conf_name, current_version = data.split('(')
 
         path = '/'.join([options.workspace, options.root, appid, current_version, conf_name])
-
         with open(path) as f:
             content = f.read()
 
