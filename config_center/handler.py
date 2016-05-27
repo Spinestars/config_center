@@ -172,5 +172,6 @@ class EditHandler(RequestHandler):
         self.render('edit.html', conf_content=conf_content)
 
 class DeleteHandler(RequestHandler):
+
     def get(self, *args, **kwargs):
         self.write('delete')
