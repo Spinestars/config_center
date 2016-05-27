@@ -17,15 +17,15 @@
         <form method="post" action="/create">
           <div class="form-group">
             <label type="text">APP ID</label>
-            <input type="text" class="form-control" name='appid' placeholder="emnsp">
+            <input type="text" class="form-control" name='appid' value="{{ conf_content['appid'] }}">
           </div>
           <div class="form-group">
             <label >Config Name</label>
-            <input type="text" class="form-control" name='conf_name' placeholder="jdbc.properties">
+            <input type="text" class="form-control" name='conf_name' value="{{ conf_content['conf_name'] }}">
           </div>
 
           <div>
-              <textarea class="form-control" rows="3" name='content' placeholder="host=127.0.0.1"></textarea>
+              <textarea class="form-control" rows="3" name='content'>{{ conf_content['content'] }}</textarea>
           </div>
 
           <div class="form-group">
@@ -35,7 +35,8 @@
           </div>
 
         </form><!-- END FORM -->
-    </div><!-- END CONTAINER -->
+
+    </div>
 
   </body>
 </html>

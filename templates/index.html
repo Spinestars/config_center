@@ -13,23 +13,64 @@
 
   </head>
   <body>
-    <div class="container">
-        <h1>hello</h1>
-        <!--<form method="post" action="/conf">-->
-          <!--<div class="form-group">-->
-            <!--<label type="text">APP ID</label>-->
-            <!--<input type="text" class="form-control"  placeholder="emnsp">-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<label >Config Name</label>-->
-            <!--<input type="text" class="form-control" placeholder="jdbc.properties">-->
-          <!--</div>-->
+    <div class="container-fluid">
+        <div class="well-sm">
+            <a class="btn btn-xs btn-info conn" href='#' onclick="return confirm('确认创建吗?')">+创建应用</a>
+        </div>
+        <hr>
 
-          <!--<div>-->
-              <!--<textarea class="form-control" rows="3" placeholder="host=127.0.0.1"></textarea>-->
-          <!--</div>-->
-        <!--</form>&lt;!&ndash; END FORM &ndash;&gt;-->
+        <table class="table table-striped  table-hover">
+            <thead>
+                <tr>
+                    <td>APP名称</td>
+                    <td>配置文件名称</td>
+                    <td>版本</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app,value in apps.items() %}
+                <tr>
+                    <td class="app">{{ app }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        {% for conf in value['conf_files'] %}
+                            <tr>
+                                <td></td>
+                                <td>{{ conf }}</td>
+                                <td>{{ value['current_version'] }}</td>
+                                <td>
+                                    <a class="btn btn-xs btn-success conn cat" href='/show?data={{ app }}({{ conf }}({{ value['current_version'] }}' value="{{ app }}({{ conf }}({{ value['current_version'] }}">查看</a>
+                                    <a class="btn btn-xs btn-danger" href='/edit?data={{ app }}({{ conf }}({{ value['current_version'] }}' onclick="">编辑</a>
+                                    <a class="btn btn-xs btn-warning" href='#' onclick="">删除</a>
+                                </td>
+                            </tr>
+                        {% end %}
+                    </td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+
     </div><!-- END CONTAINER -->
+<script>
+    $(document).ready(function () {
+{#        $('.cat').click(function (event) {#}
+{#            //alert($(this).attr('value'))#}
+{#            $.ajax({#}
+{#                    url:"/cat",#}
+{#                    data:{"data":$(this).attr('value')},#}
+{#                    success:function () {#}
+{##}
+{#                    }#}
+{#            });//end get json#}
+{##}
+{#        });//end #show#}
 
+
+    });//end document
+</script>
   </body>
 </html>
