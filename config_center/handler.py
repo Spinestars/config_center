@@ -174,4 +174,14 @@ class EditHandler(RequestHandler):
 class DeleteHandler(RequestHandler):
 
     def get(self, *args, **kwargs):
-        self.write('delete')
+        content = ''
+        data = self.get_argument('data')
+        appid, conf_name, current_version = data.split('(')
+
+        node = os_path.join(options.root,appid,conf_name)
+        try:
+            self.application.zk.delete(node,recursive=True)
+        except Exception as e:
+            raise HTTPError(500, reason=str(e))
+
+        self.redirect('/')

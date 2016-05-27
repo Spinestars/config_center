@@ -15,7 +15,7 @@
   <body>
     <div class="container-fluid">
         <div class="well-sm">
-            <a class="btn btn-xs btn-info conn" href='#' onclick="return confirm('确认创建吗?')">+创建应用</a>
+            <a class="btn btn-xs btn-info conn" href='/create' onclick="return confirm('确认创建吗?')">+创建应用</a>
         </div>
         <hr>
 
@@ -44,7 +44,7 @@
                                 <td>
                                     <a class="btn btn-xs btn-success conn cat" href='/show?data={{ app }}({{ conf }}({{ value['current_version'] }}' value="{{ app }}({{ conf }}({{ value['current_version'] }}">查看</a>
                                     <a class="btn btn-xs btn-danger" href='/edit?data={{ app }}({{ conf }}({{ value['current_version'] }}' onclick="">编辑</a>
-                                    <a class="btn btn-xs btn-warning" href='#' onclick="">删除</a>
+                                    <a class="btn btn-xs btn-warning" href='/delete?data={{ app }}({{ conf }}({{ value['current_version'] }}'>删除</a>
                                 </td>
                             </tr>
                         {% end %}
