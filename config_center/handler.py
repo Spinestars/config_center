@@ -102,7 +102,7 @@ class IndexHandler(RequestHandler):
         """
         test = {
             "app1":{
-                "current_version":"2015",
+                "current_version":"2016",
                 "history_version":['2015','2016'],
                 "conf_files":["app1.conf","app2.conf","app2.conf"]
             },
@@ -116,6 +116,7 @@ class IndexHandler(RequestHandler):
 
         data = {}
         node = os_path.join(options.root)
+        self.application.zk.ensure_path(node)
         appids = self.application.zk.get_children(node)
         conf_files = None
         for app in appids:
